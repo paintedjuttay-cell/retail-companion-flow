@@ -255,10 +255,8 @@
       <!-- React App Mount Point -->
       <div id="root"></div>
       
-      <!-- Fallback content for when React is not available -->
-      <noscript>
-        {{ content_for_layout }}
-      </noscript>
+      <!-- Fallback/Initial content -->
+      {{ content_for_layout }}
     </main>
 
     {% sections 'footer-group' %}

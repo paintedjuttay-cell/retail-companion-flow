@@ -1,14 +1,52 @@
 {% comment %}
-This section renders the React app for the homepage
-The actual content is handled by the React application
+This section renders content for the homepage
 {% endcomment %}
 
 <div class="index-sections">
-  {% comment %}
-  React app will mount here and handle all homepage content
-  If React fails to load, Shopify's standard index sections can be shown
-  {% endcomment %}
+  <div class="page-width">
+    <div class="homepage-hero">
+      <h1>{{ section.settings.heading | escape }}</h1>
+      <div class="rte">
+        {{ section.settings.description }}
+      </div>
+      <p>Welcome to Painted Juttay - Your Shopify theme is working!</p>
+      <div id="react-mount-check"></div>
+    </div>
+  </div>
 </div>
+
+<style>
+  .homepage-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: white;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .homepage-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .page-width {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .rte p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+</style>
 
 {% schema %}
 {
