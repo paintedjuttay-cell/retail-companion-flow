@@ -1,18 +1,20 @@
 {% comment %}
-This section renders content for the homepage
+This section renders content for the homepage - React app will mount here
 {% endcomment %}
 
 <div class="index-sections">
-  <div class="page-width">
-    <div class="homepage-hero">
-      <h1>{{ section.settings.heading | escape }}</h1>
-      <div class="rte">
-        {{ section.settings.description }}
+  {% comment %} React app will render the full homepage content {% endcomment %}
+  <noscript>
+    <div class="page-width">
+      <div class="homepage-hero">
+        <h1>{{ section.settings.heading | escape }}</h1>
+        <div class="rte">
+          {{ section.settings.description }}
+        </div>
+        <p>Please enable JavaScript to view the full Painted Juttay experience.</p>
       </div>
-      <p>Welcome to Painted Juttay - Your Shopify theme is working!</p>
-      <div id="react-mount-check"></div>
     </div>
-  </div>
+  </noscript>
 </div>
 
 <style>

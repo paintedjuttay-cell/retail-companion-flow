@@ -1,49 +1,191 @@
-/* Shopify Theme - Base Styles */
-/* This file will be replaced when the React app is built */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-  color: #333;
+@layer base {
+  :root {
+    /* Street Art Design System - Primary Colors */
+    --primary: 18 99% 59%;        /* Orange (#ff6b35) */
+    --primary-glow: 33 96% 56%;   /* Gold (#f7931e) */
+    --primary-dark: 14 100% 45%;  /* Darker orange */
+    --primary-light: 21 100% 70%; /* Lighter orange */
+    
+    /* Backgrounds */
+    --background: 210 11% 10%;    /* Dark grey (#1a1a1a) */
+    --surface: 210 9% 18%;        /* Medium grey (#2d2d2d) */
+    --card: 210 9% 18%;
+    --popover: 210 9% 18%;
+    
+    /* Text Colors */
+    --foreground: 0 0% 95%;       /* Almost white */
+    --muted: 210 6% 60%;          /* Medium grey text */
+    --muted-foreground: 210 6% 60%;
+    
+    /* Interactive Elements */
+    --accent: 33 96% 56%;         /* Gold accent */
+    --accent-foreground: 210 11% 10%;
+    --secondary: 210 9% 22%;      /* Slightly lighter than surface */
+    --secondary-foreground: 0 0% 95%;
+    
+    /* Borders & Inputs */
+    --border: 210 9% 25%;
+    --input: 210 9% 25%;
+    --ring: 18 99% 59%;           /* Primary orange for focus rings */
+    
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-surface: linear-gradient(135deg, hsl(var(--background)), hsl(var(--surface)));
+    --gradient-accent: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(var(--background) / 0.8);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.125rem;
+    --radius: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+  }
 }
 
-.page-width {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/70;
+  }
 }
 
-/* Painted Juttay brand colors */
-:root {
-  --primary-orange: #ff6b35;
-  --primary-gold: #f7931e;
-  --dark-bg: #1a1a1a;
-  --medium-bg: #2d2d2d;
-}
-
-/* Ensure the theme looks good even without React */
-.homepage-hero {
-  background: linear-gradient(135deg, var(--dark-bg), var(--medium-bg));
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.homepage-hero h1 {
-  background: linear-gradient(135deg, var(--primary-orange), var(--primary-gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  .homepage-hero h1 {
-    font-size: 2rem;
+@layer components {
+  /* Animated Background Elements */
+  .bg-animated {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .bg-animated::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient-primary);
+    opacity: 0.1;
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+  
+  /* Hover animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+  
+  /* Custom button styles */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Typography styles */
+  .heading-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Layout utilities */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
