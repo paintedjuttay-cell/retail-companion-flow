@@ -1,0 +1,42 @@
+{% comment %}
+This section renders the React app for the homepage
+The actual content is handled by the React application
+{% endcomment %}
+
+<div class="index-sections">
+  {% comment %}
+  React app will mount here and handle all homepage content
+  If React fails to load, Shopify's standard index sections can be shown
+  {% endcomment %}
+</div>
+
+{% schema %}
+{
+  "name": "Homepage",
+  "tag": "section",
+  "class": "section-template-index",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Homepage Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Welcome to Painted Juttay",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Where Art Meets Street</p>",
+      "label": "Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,48 @@
+{% comment %}
+Footer section
+{% endcomment %}
+
+<footer class="footer">
+  <div class="footer__content page-width">
+    <div class="footer__blocks-wrapper grid grid--1-col grid--2-col-tablet grid--4-col-desktop">
+      <div class="footer__block footer__block--menu">
+        <h2 class="footer__heading">{{ 'sections.footer.shop' | t }}</h2>
+        <ul class="footer__list list-unstyled" role="list">
+          {% for link in linklists.footer.links %}
+            <li class="footer__list-item">
+              <a href="{{ link.url }}" class="footer__list-item__link link link--text">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer__content-bottom">
+      <div class="footer__copyright caption">
+        <small class="copyright__content">&copy; {{ "now" | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "footer",
+  "class": "section-footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Footer",
+      "label": "Heading"
+    }
+  ]
+}
+{% endschema %}

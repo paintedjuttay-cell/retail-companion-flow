@@ -1,0 +1,21 @@
+{% comment %}
+404 page section
+{% endcomment %}
+
+<div class="template-404 page-width">
+  <div class="center">
+    <h1 class="title title--primary">{{ 'templates.404.title' | t }}</h1>
+    <p>{{ 'templates.404.subtext' | t }}</p>
+    <a href="{{ routes.root_url }}" class="button">
+      {{ 'general.continue_shopping' | t }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404 page",
+  "tag": "section",
+  "class": "section-template-404"
+}
+{% endschema %}

@@ -1,0 +1,34 @@
+{% comment %}
+Header section - This will be overridden by React navigation
+{% endcomment %}
+
+<header class="header">
+  <div class="header__inner page-width">
+    <div class="header__heading">
+      <h1 class="header__heading-text">
+        <a href="{{ routes.root_url }}" class="header__heading-link">
+          {% if settings.logo != blank %}
+            <img src="{{ settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}">
+          {% else %}
+            {{ shop.name }}
+          {% endif %}
+        </a>
+      </h1>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    }
+  ]
+}
+{% endschema %}

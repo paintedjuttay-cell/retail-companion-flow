@@ -1,0 +1,2 @@
+# This file ensures the assets directory exists for Shopify builds
+# The actual React build output will be placed in this directory
